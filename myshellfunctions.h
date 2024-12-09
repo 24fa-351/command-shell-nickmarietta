@@ -3,6 +3,8 @@
 
 void parse_arguments(const char* input, char **args);
 
+void execute_command(char **args);
+
 void handle_redirect(char **args);
 
 void handle_pipe(char *input);
