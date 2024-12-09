@@ -19,8 +19,8 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    char output_file = argv[1];
-    char command = argv[2];
+    char *output_file = argv[1];
+    char *command = argv[2];
     char *args[MAX_TOKENS];
 
     // Copy the arguments into the args array
