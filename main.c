@@ -65,7 +65,7 @@ int main(int argc, char *argv[])
         {
             // if not pipe, then command
             // argc - 2 because we are not counting the output file and the command
-            handle_cd(argc - 2, args);
+            handle_cd(args);
         }
 
         exit(EXIT_SUCCESS);
