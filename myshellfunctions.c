@@ -78,7 +78,7 @@ void handle_cd(char **args)
     {
         fprintf(stderr, "no argument given\n");
     }
-    else if (chdir(args[1] != 0))
+    else if (chdir(args[1]) != 0)
     {
         fprintf(stderr, "cd not working");
     }
@@ -88,7 +88,7 @@ void handle_cd(char **args)
 void handle_pwd()
 {
     char command[MAX_INPUT_SIZE];
-    if (getcwd(command, sizeof(command) != NULL))
+    if (getcwd(command, sizeof(command)) != NULL)
     {
         printf("%s\n", command);
     }
