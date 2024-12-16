@@ -99,8 +99,58 @@ void handle_pwd()
 }
 
 // this is to handle the set with env. variables
-void handle_set(char **args) {
-
+void handle_set(char **args)
+{
+    if (args[1] != NULL && args[2] != NULL)
+    {
+        if (setenv(args[1], args[2], 1) != 0)
+        {
+            fprintf(stderr, "setenv error");
+        }
+    }
+    else
+    {
+        fprintf(stderr, "wrong usage of set");
+    }
 }
 
 // this is to handle the unset for env. variables
+void handle_unset(char **args)
+{
+    if (args[1] != NULL)
+    {
+        if (unsetenv(args[1]) != 0)
+        {
+            fprintf(stderr, "unsetenv error");
+        }
+    }
+    else
+    {
+        fprintf(stderr, "wrong usage of unset");
+    }
+}
+
+// this is for the echo variables
+void handle_echo(char **args)
+{
+    for (int ix = 1; args[ix] != NULL; ++ix)
+    {
+        if (args[ix][0] == "$")
+        {
+            char *environment_val = getenv(args[ix] + 1);
+            if (environment_val)
+            {
+                printf("this is the environment value: %s ", environment_val);
+            }
+            else
+            {
+                printf("this is not defined... :(");
+            }
+        }
+        else
+        {
+            printf("total amount of arguments: %s", args[ix]);
+        }
+    }
+    printf("\n");
+}
